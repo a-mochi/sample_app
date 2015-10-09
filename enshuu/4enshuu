@@ -1,0 +1,26 @@
+4.6-1
+>> def string_shuffle(s)
+>>   s.split('').shuffle.join
+>> end
+=> nil
+>> string_shuffle("foobar")
+
+4.6-2
+>> class String
+>>   def shuffle
+>>     self.split('').shuffle.join
+>>   end
+>> end
+=> nil
+>> "foobar".shuffle
+
+4.6-3
+person1 = {:first => "ボブ",:last => "ピーマン"}
+person2 = {:first => "キャリー",:last => "トマト"}
+person3 = {:first => "トム",:last =>"ネギ"}
+
+params = {}
+params[:father] = person1
+params[:mother] = person2
+params[:child] = person3
+
