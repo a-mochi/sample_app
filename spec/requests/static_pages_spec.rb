@@ -31,6 +31,21 @@ describe "Static pages" do
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end
       end
+      it { should have_content(Micropost.count)}
+      it { should have_content("microposts") }
+    end
+
+    describe "for signed-in users single post" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
+        sign_in user
+        visit root_path
+      end
+
+      it { should have_content(Micropost.count)}
+      it { should have_content("micropost") }
+      it { should_not have_content("microposts")}
     end
   end
   
